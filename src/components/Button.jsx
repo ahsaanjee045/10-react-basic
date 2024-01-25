@@ -1,15 +1,23 @@
-function Button() {
+function Button({ text = "Something", mynumber = 3, clr = "lightgray" }) {
     return (
         <button
             style={{
-                color: "red",
+                color: clr,
                 backgroundColor: "black",
-                fontSize : 15
+                fontSize: 15,
             }}
         >
-            Click here {2 + 2}
+            {text}
+            {/* false, 0, "", undefined , null */}
+            {mynumber}
         </button>
     );
 }
+
+// Button.defaultProps = {
+//     text : "Something default",
+//     mynumber : 1,
+
+// }
 
 export default Button;

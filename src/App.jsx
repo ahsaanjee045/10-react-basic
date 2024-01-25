@@ -1,20 +1,30 @@
 import Button from "./components/Button.jsx";
 import Counter from "./components/Counter.jsx";
+import ProductCard from "./components/ProductCard.jsx";
+import products from "./data.js";
+
+
+// Props 
+
 
 function App() {
-    let person = { name: "John Doe" };
+   
     return (
-        <div>
-            <Button />
-            <Button />
-            <Button />
-            <Button />
-            <Counter />
+        <div className="container" title="this is a div">
+           <ProductCard product={products[0]}/>
+           <ProductCard product={products[1]}/>
+           <ProductCard product={products[2]}/>
+           <ProductCard product={products[3]}/>
         </div>
     );
 }
 
 export default App;
+
+
+
+
+
 
 
 // CSs in js
