@@ -1,15 +1,12 @@
-import Button from "./components/Button.jsx";
-import Counter from "./components/Counter.jsx";
-import ProductCard from "./components/ProductCard.jsx";
-import products from "./data.js";
+import React from "react";
+import Sculpture from "./components/Sculpture.jsx";
+
 
 function App() {
+    console.log();
     return (
         <div className="container" id="my-container">
-           <Counter/>
-           <Counter/>
-           <Counter/>
-
+           <Sculpture/>
         </div>
     );
 }
