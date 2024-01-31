@@ -8,6 +8,7 @@ const Trick = () => {
     };
 
     console.log("Re-render");
+    // components, props and states
 
     return (
         <div>

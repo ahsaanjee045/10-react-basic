@@ -1,15 +1,10 @@
-import React from "react";
-import Sculpture from "./components/Sculpture.jsx";
-import Trick from "./components/Trick.jsx";
-
+import Form from "./components/Form";
 
 function App() {
     console.log();
-    return (
-        <div className="container" id="my-container">
-           <Trick/>
-        </div>
-    );
+    return <div className="container" id="my-container">
+      <Form/>
+    </div>;
 }
 
 export default App;
