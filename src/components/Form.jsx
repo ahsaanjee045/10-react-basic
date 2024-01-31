@@ -1,43 +1,77 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
+import { z } from "zod";
+
+// schema
+const userSchema = z.object({
+    email: z.string().trim().min(1).email(),
+    password: z.string().trim().min(6).max(20),
+    username: z.string().trim().min(1).toLowerCase(),
+});
 
 // uncontrolled components/inputs - Controlled by DOM
 // controlled components/input - Controlled by react state
 
 const Form = () => {
-    const [email, setEmail] = useState("");
+    const [formData, setFormData] = useState({
+        email: "",
+        password: "",
+        username: "",
+        phone: "",
+        address: "",
+    });
 
     const handleSubmit = (e) => {
         e.preventDefault(); // it will prevent the default behavior or current event
-        console.log(email);
-        setEmail("")
+        let result = userSchema.safeParse(formData);
+        if (!result.success) {
+            
+            toast.success(result.error.format()?.username?._errors[0], {
+                position : "top-left",
+                duration : 5000
+            });
+        }
+        console.log(formData);
     };
 
-    console.log("Email state is : ", email);
+    console.log(formData);
+
+    const handleChange = (e) => {
+        // console.log(e.target.name);
+        // console.log(e.target.value);
+        // let {name : fieldName, value} = e.target
+
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 {/* how can i get and set value in this field */}
                 <input
-                    value={email}
-                    onChange={(e) => {
-                        setEmail(e.target.value);
-                    }}
+                    value={formData.email}
+                    onChange={handleChange}
+                    name="email"
                     type="text"
                     placeholder="Enter E-Mail"
-                    id="email"
                 />
-                <input type="text" placeholder="Enter Password" id="password" />
-                <input type="submit" value="Login" />
 
-                <button
-                    onClick={() => {
-                        setEmail("john@example.com");
-                    }}
-                    type="button"
-                >
-                    Set Email (john@example.com)
-                </button>
+                <input
+                    value={formData.password}
+                    onChange={handleChange}
+                    type="text"
+                    name="password"
+                    placeholder="Enter Password"
+                />
+                <input
+                    value={formData.username}
+                    onChange={handleChange}
+                    type="text"
+                    name="username"
+                    placeholder="Enter username"
+                />
+
+                <input type="submit" value="Login" />
             </form>
         </div>
     );
