@@ -26,11 +26,12 @@ const Form = () => {
         let result = userSchema.safeParse(formData);
         if (!result.success) {
             
-            toast.success(result.error.format()?.username?._errors[0], {
+            toast.error(result.error.format()?.username?._errors[0], {
                 position : "top-left",
                 duration : 5000
             });
         }
+        // you can send the form data to a backend server
         console.log(formData);
     };
 
