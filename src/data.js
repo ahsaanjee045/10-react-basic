@@ -107,7 +107,6 @@ let products = [
             "https://cdn.dummyjson.com/product-images/6/4.jpg",
         ],
     },
-    
 ];
 
 const sculptureList = [
@@ -209,39 +208,68 @@ const sculptureList = [
     },
 ];
 
+export const people = [
+    {
+        id: 0, // Used in JSX as a key
+        name: "Creola Katherine Johnson",
+        profession: "mathematician",
+        accomplishment: "spaceflight calculations",
+        imageId: "MK3eW3A",
+    },
+    {
+        id: 1, // Used in JSX as a key
+        name: "Mario José Molina-Pasquel Henríquez",
+        profession: "chemist",
+        accomplishment: "discovery of Arctic ozone hole",
+        imageId: "mynHUSa",
+    },
+    {
+        id: 2, // Used in JSX as a key
+        name: "Mohammad Abdus Salam",
+        profession: "physicist",
+        accomplishment: "electromagnetism theory",
+        imageId: "bE7W1ji",
+    },
+    {
+        id: 3, // Used in JSX as a key
+        name: "Percy Lavon Julian",
+        profession: "chemist",
+        accomplishment:
+            "pioneering cortisone drugs, steroids and birth control pills",
+        imageId: "IOjWm71",
+    },
+    {
+        id: 4, // Used in JSX as a key
+        name: "Percy Lavon Julian",
+        profession: "chemist",
+        accomplishment:
+            "pioneering cortisone drugs, steroids and birth control pills",
+        imageId: "IOjWm71",
+    },
+];
 
-export const people = [{
-    id: 0, // Used in JSX as a key
-    name: 'Creola Katherine Johnson',
-    profession: 'mathematician',
-    accomplishment: 'spaceflight calculations',
-    imageId: 'MK3eW3A'
-  }, {
-    id: 1, // Used in JSX as a key
-    name: 'Mario José Molina-Pasquel Henríquez',
-    profession: 'chemist',
-    accomplishment: 'discovery of Arctic ozone hole',
-    imageId: 'mynHUSa'
-  }, {
-    id: 2, // Used in JSX as a key
-    name: 'Mohammad Abdus Salam',
-    profession: 'physicist',
-    accomplishment: 'electromagnetism theory',
-    imageId: 'bE7W1ji'
-  }, {
-    id: 3, // Used in JSX as a key
-    name: 'Percy Lavon Julian',
-    profession: 'chemist',
-    accomplishment: 'pioneering cortisone drugs, steroids and birth control pills',
-    imageId: 'IOjWm71'
-  },{
-    id: 4, // Used in JSX as a key
-    name: 'Percy Lavon Julian',
-    profession: 'chemist',
-    accomplishment: 'pioneering cortisone drugs, steroids and birth control pills',
-    imageId: 'IOjWm71'
-  } ];
-
+const todoList = [
+    {
+        id: 1,
+        todo: "Do something nice for someone I care about",
+        status: "pending",
+    },
+    {
+        id: 2,
+        todo: "Memorize the fifty states and their capitals",
+        status: "pending",
+    },
+    {
+        id: 3,
+        todo: "Watch a classic movie",
+        status: "pending",
+    },
+    {
+        id: 4,
+        todo: "Contribute code or a monetary donation ",
+        status: "pending",
+    },
+];
 
 export default products;
-export { sculptureList };
+export { sculptureList, todoList };
