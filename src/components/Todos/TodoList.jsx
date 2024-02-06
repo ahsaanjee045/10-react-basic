@@ -1,9 +1,14 @@
 import { useState } from "react";
 import { todoList } from "../../data";
 import TodoListItem from "./TodoListItem";
+import toast from "react-hot-toast";
+import TodoInputForm from "./TodoInputForm";
 
 const TodoList = () => {
-    const [todos, setTodos] = useState(todoList);
+    const [todos, setTodos] = useState(
+        JSON.parse(localStorage.getItem("todos")) || []
+    );
+    const size = todos.length;
 
     const handleStatusChange = (id) => {
         let tempTodos = todos.map((todo) => {
@@ -15,6 +20,38 @@ const TodoList = () => {
             }
         });
         setTodos(tempTodos);
+        window.localStorage.setItem("todos", JSON.stringify(tempTodos));
+        toast.success("Todo Status Changed!");
+    };
+
+    const handleDelete = (id) => {
+        let index = todos.findIndex((todo) => todo.id === id);
+        let tempTodos = [...todos];
+        tempTodos.splice(index, 1);
+        setTodos(tempTodos);
+        toast.success("Todo with ID " + id + " has been deleted");
+        window.localStorage.setItem("todos", JSON.stringify(tempTodos));
+    };
+
+    const addTodo = (input) => {
+        let todoObj = {
+            id: size + 1,
+            todo: input,
+            status: "pending",
+        };
+
+        setTodos((oldItems) => {
+            return [todoObj, ...oldItems];
+        });
+
+        toast.success("Todo added successfully", {
+            position: "top-center",
+            duration: 2000,
+        });
+        window.localStorage.setItem(
+            "todos",
+            JSON.stringify([todoObj, ...todos])
+        );
     };
 
     return (
@@ -28,36 +65,16 @@ const TodoList = () => {
                 minHeight: "400px",
             }}
         >
-            <div
-                style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                    gap: "10px",
-                }}
-            >
-                <input
-                    style={{
-                        padding: "8px 10px",
-                        flex: 1,
-                    }}
-                    type="text"
-                    placeholder="Enter Your task here"
-                />
-                <button
-                    style={{
-                        padding: "7px 9px",
-                    }}
-                >
-                    Add Todo
-                </button>
-            </div>
+            {/* Form to create new Todo */}
+            <TodoInputForm addTodo={addTodo} />
+
             {todos.map((todo) => {
                 return (
                     <TodoListItem
                         key={todo.id}
                         todo={todo}
                         handleStatusChange={handleStatusChange}
+                        handleDelete={handleDelete}
                     />
                 );
             })}
@@ -66,18 +83,3 @@ const TodoList = () => {
 };
 
 export default TodoList;
-
-// console.log("Change recieved In Parent From TodoItem with id : ", id);
-// // map
-// // index , mutate
-
-// let index = todos.findIndex((todo) => {
-//     return todo.id === id;
-// });
-// console.log(index);
-
-// let tempTodos = [...todos];
-// // console.log(tempTodos[index].status)
-// tempTodos[index].status = "done";
-// console.log(tempTodos);
-// setTodos(tempTodos);

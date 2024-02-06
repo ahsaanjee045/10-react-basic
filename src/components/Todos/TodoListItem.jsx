@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const TodoListItem = ({ todo, handleStatusChange }) => {
+const TodoListItem = ({ todo, handleStatusChange, handleDelete }) => {
     return (
         <div
             style={{
@@ -16,9 +16,13 @@ const TodoListItem = ({ todo, handleStatusChange }) => {
             }}
         >
             <h3>{todo.todo}</h3>
-            <button onClick={() => handleStatusChange(todo.id)}>
-                Mark as Done
-            </button>
+            {todo.status === "pending" ? (
+                <button onClick={() => handleStatusChange(todo.id)}>
+                    Mark as Done
+                </button>
+            ) : (
+                <button onClick={() => handleDelete(todo.id)}>Delete</button>
+            )}
         </div>
     );
 };
