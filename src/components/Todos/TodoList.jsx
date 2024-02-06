@@ -8,6 +8,7 @@ const TodoList = () => {
     const [todos, setTodos] = useState(
         JSON.parse(localStorage.getItem("todos")) || []
     );
+
     const size = todos.length;
 
     const handleStatusChange = (id) => {
@@ -55,16 +56,7 @@ const TodoList = () => {
     };
 
     return (
-        <div
-            style={{
-                width: "40%",
-                padding: "30px",
-                borderRadius: "20px",
-                border: "1px solid lightgray",
-                boxShadow: "1px 1px 15px 6px lightgray",
-                minHeight: "400px",
-            }}
-        >
+        <div className="p-[30px] rounded-[20px] border border-solid border-gray-300 shadow-md min-h-[400px] w-[40%]">
             {/* Form to create new Todo */}
             <TodoInputForm addTodo={addTodo} />
 

@@ -4,12 +4,11 @@ import TodoList from "./components/Todos/TodoList";
 import Button from "./components/Button";
 import { Toaster } from "react-hot-toast";
 
-
 const App = () => {
     return (
         <div className="App">
-            <Toaster/>
-            <TodoList/>
+            <Toaster />
+            <TodoList />
         </div>
     );
 };
