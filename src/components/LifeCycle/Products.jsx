@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from "react";
 
 const Products = () => {
-    const [count, setCount] = useState(0);
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
-        // mounting
-        //updation
+        fetch("https://dummyjson.com/products")
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                console.log(data.products);
+                setProducts(data.products);
+            })
+            .catch((err) => console.log(err));
     }, []);
 
-    return (
-        <div>
-            {/* {JSON.stringify(products)} */}
-            <button onClick={() => setCount(count + 1)}>Referesh</button>
-        </div>
-    );
+    return <div>
+        {/* list the product here */}
+    </div>;
 };
 
 export default Products;
