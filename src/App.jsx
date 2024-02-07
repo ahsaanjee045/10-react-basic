@@ -1,14 +1,18 @@
-import React from "react";
-import Listing from "./components/Listing";
-import TodoList from "./components/Todos/TodoList";
-import Button from "./components/Button";
+import React, { useState } from "react";
+
 import { Toaster } from "react-hot-toast";
+import Products from "./components/LifeCycle/Products";
 
 const App = () => {
+    const [visible, setVisible] = useState(true);
+
     return (
-        <div className="App">
+        <div  className="h-[1500px] App">
             <Toaster />
-            <TodoList />
+            {visible ? <Products /> : null}
+            <button onClick={() => setVisible(!visible)}>
+                Change Visibility
+            </button>
         </div>
     );
 };
