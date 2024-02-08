@@ -1,15 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
+import CountContext from "../context/CountContext";
 
-/**
- * @type {React.FC}
- * @param {React.ComponentPropsWithoutRef<"button">} props
- * @returns {React.JSX.Element}
- */
-const Button = (props) => {
-    return <button onClick={props.onClick}>Button</button>;
+const Button = ({ children }) => {
+    console.log("Button Rendering");
+    const context = useContext(CountContext);
+    return <div>{children}</div>;
 };
 
 export default Button;
+
 // function Button({ text = "Something", mynumber = 3, clr = "lightgray" }) {
 //     return (
 //         <button

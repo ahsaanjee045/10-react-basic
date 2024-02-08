@@ -1,18 +1,15 @@
-import React, { useState } from "react";
-
-import { Toaster } from "react-hot-toast";
-import Products from "./components/LifeCycle/Products";
+import React from "react";
+import Welcome from "./components/Welcome";
+import Cart from "./components/Cart";
+import Button from "./components/Button";
 
 const App = () => {
-    const [visible, setVisible] = useState(true);
-
+    console.log("App rendering");
     return (
-        <div  className="h-[1500px] App">
-            <Toaster />
-            {visible ? <Products /> : null}
-            <button onClick={() => setVisible(!visible)}>
-                Change Visibility
-            </button>
+        <div className="px-8 pt-5">
+            <Welcome />
+            <Cart />
+            <Button>Click here</Button>
         </div>
     );
 };

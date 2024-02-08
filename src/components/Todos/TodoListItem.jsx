@@ -6,17 +6,6 @@ const TodoListItem = ({ todo, handleStatusChange, handleDelete }) => {
             className={`${
                 todo.status === "pending" ? "bg-rose-600" : "bg-green-300"
             } flex justify-between items-center py-[10px] px-[20px] my-[10px] text-white rounded-[10px]`}
-            // style={{
-            //     display: "flex",
-            //     justifyContent: "space-between",
-            //     alignItems: "center",
-            //     padding: "10px 20px",
-            //     backgroundColor:
-            //         todo.status === "pending" ? "crimson" : "lightgreen",
-            //     marginBlock: "10px",
-            //     color: "white",
-            //     borderRadius: "10px",
-            // }}
         >
             <div className="flex gap-2">
                 <input type="checkbox" name="" id="" />
