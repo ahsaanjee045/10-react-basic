@@ -1,18 +1,39 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useState } from "react";
+import { Navigate, Route, Routes } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import AdminLayout from "./layouts/AdminLayout";
+import Login from "./pages/Login";
+import Navbar from "./components/Navbar";
+import Shop from "./pages/Shop";
+import SingleProduct from "./pages/SingleProduct";
 
 const App = () => {
+    const [user, setUser] = useState(null);
     return (
         <div>
+            <Navbar />
             <Routes>
                 <Route path="/" element={<LandingPage />} />
                 <Route path="/shop" element={<Shop />} />
-                <Route path="/admin" element={<AdminLayout />}>
+                <Route path="/shop/:id" element={<SingleProduct />} />
+
+                <Route
+                    path="/admin"
+                    element={
+                        user ? (
+                            <AdminLayout user={user} />
+                        ) : (
+                            <Navigate to={"/"} />
+                        )
+                    }
+                >
                     <Route index element={<WelcomeAdmin />} />
                     <Route path="add-product" element={<AddProduct />} />
                 </Route>
+                <Route
+                    path="/login"
+                    element={<Login user={user} setUser={setUser} />}
+                />
 
                 <Route path="*" element={<NotFound />} />
             </Routes>
@@ -24,9 +45,6 @@ export default App;
 
 function LandingPage() {
     return <div>Landing page</div>;
-}
-function Shop() {
-    return <div>Shop page</div>;
 }
 
 function WelcomeAdmin() {

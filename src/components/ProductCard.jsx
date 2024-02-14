@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ProductCard = ({ product = {} }) => {
     return (
@@ -21,10 +22,13 @@ const ProductCard = ({ product = {} }) => {
                         }}
                     >
                         <div style={{ marginRight: "25px" }}>
-                            <img
-                                style={{ width: "250px", height: "220px" }}
-                                src={product.thumbnail}
-                            />
+                            <Link to={`/shop/${product.id}`}>
+                                {" "}
+                                <img
+                                    style={{ width: "250px", height: "220px" }}
+                                    src={product.thumbnail}
+                                />
+                            </Link>
                         </div>
                         <div style={{ width: "30rem" }}>
                             <h3 style={{ marginBlockEnd: "0" }}>

@@ -1,10 +1,18 @@
 import React from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Navigate, Outlet } from "react-router-dom";
 
-const AdminLayout = () => {
+const AdminLayout = ({user}) => {
+    // if (!user) {
+    //     return <Navigate to={"/"} />;
+    // }
+
+
+    // logically redirect
+
     return (
         <div className="flex h-screen">
             <aside className="bg-red-300 h-full px-4 py-6">
+                <h3>Welcome {user?.name}</h3>
                 <ul>
                     <li>
                         <Link className="hover:underline" to={"/admin"}>
